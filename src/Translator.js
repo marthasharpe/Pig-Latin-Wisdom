@@ -8,7 +8,8 @@ const Translator = () => {
   
   return (
     <div className="translator-container">
-      <h1>Translator</h1>
+      <h2>Translator</h2>
+      <p>Yoda's version of the quote.</p>
     </div>
   );
 }

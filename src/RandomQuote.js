@@ -5,11 +5,11 @@ import useFetch from './useFetch';
 const RandomQuote = () => {
   
   useFetch('http://api.forismatic.com/api/1.0/')
-  
+  //https://official-joke-api.appspot.com/jokes/programming/random
   return (
     <div className="quote-container">
-      <h1>Random Quote</h1>
-      {}
+      <h2>Random Quote</h2>
+      <p>Inspirational quote to translate.</p>
     </div>
   );
 }
