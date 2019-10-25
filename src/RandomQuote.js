@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './RandomQuote.css';
-import useFetch from './useFetch';
 
 const RandomQuote = () => {
+
+  const [ quote, setQuote ] = useState('');
+  const [ author, setAuthor] = useState('');
   
-  useFetch('http://api.forismatic.com/api/1.0/')
-  //https://official-joke-api.appspot.com/jokes/programming/random
+  useEffect(() => {
+    fetch('https://api.quotable.io/random')
+    .then(response => response.json())
+    .then(data => {
+      console.log(`${data.content} —${data.author}`)
+      setQuote(data.content);
+      setAuthor(data.author);
+    })
+  }, []);
+  
   return (
     <div className="quote-container">
       <h2>Random Quote</h2>
-      <p>Inspirational quote to translate.</p>
+      <p>{quote}</p>
+      <p>- {author}</p>
     </div>
   );
 }
