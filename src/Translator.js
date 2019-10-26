@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Translator.css';
 
-const Translator = () => {
+const Translator = ({ quote }) => {
   
-  // const baseUrl = 'http://yoda-api.appspot.com/api/v1/yodish?text';
-  // const string = {quote};
-  // const completeUrl = baseUrl + encodeURIComponent(string);
-  // console.log(completeUrl);
+  const [ yodish, setYodish ] = useState('Very wise, I am.')
+
+  const baseUrl = 'https://cors-anywhere.herokuapp.com/http://yoda-api.appspot.com/api/v1/yodish?text=';
+  const encodedString = encodeURIComponent(quote);
+  const completeUrl = baseUrl + encodedString;
+  
+  const fetchYoda = () => {
+    console.log(completeUrl);
+    fetch(completeUrl)
+      .then(response => response.json())
+      .then(data => {
+        setYodish(data.yodish);
+      })
+    }
   
   return (
     <div className="translator-container">
-      <h2>Translator</h2>
-      <p>Yoda's version of the quote.</p>
+      <button onClick={fetchYoda}>What Would Yoda Say?</button>
+      <p>{yodish}</p>
       <p>- Yoda</p>
     </div>
   );

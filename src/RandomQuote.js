@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './RandomQuote.css';
+import Translator from './Translator';
 
 const RandomQuote = () => {
-
-  const [ quote, setQuote ] = useState('');
-  const [ author, setAuthor] = useState('');
+  const [ quote, setQuote ] = useState('I am very wise.');
+  const [ author, setAuthor] = useState('Wise Person');
   
-  useEffect(() => {
+  const fetchQuote = () => {
     fetch('https://api.quotable.io/random')
-    .then(response => response.json())
-    .then(data => {
-      console.log(`${data.content} —${data.author}`)
-      setQuote(data.content);
-      setAuthor(data.author);
-    })
-  }, []);
-  
+      .then(response => response.json())
+      .then(data => {
+        console.log(`${data.content} —${data.author}`)
+        setQuote(data.content);
+        setAuthor(data.author);
+      })
+    }
   return (
     <div className="quote-container">
-      <h2>Random Quote</h2>
+      <button onClick={fetchQuote}>A Wise Saying</button>
       <p>{quote}</p>
       <p>- {author}</p>
+      <Translator quote={quote}/>
     </div>
   );
 }
