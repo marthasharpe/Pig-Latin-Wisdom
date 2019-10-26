@@ -6,11 +6,9 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Words of Wisdom</h1>
+      <h1 className="title">Words of Wisdom</h1>
       <h2>~ in Pig Latin ~</h2>
-      <div className="app-container">
-        <RandomQuote />
-      </div>
+      <RandomQuote />
     </div>
   );
 }

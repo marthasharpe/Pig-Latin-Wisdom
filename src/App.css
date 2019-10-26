@@ -1,12 +1,7 @@
 .App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.app-container {
+  height: 100%;
   width: 100%;
   display: flex;
-  flex-direction: row wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  margin: 1rem;
 }
