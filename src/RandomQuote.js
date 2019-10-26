@@ -27,7 +27,7 @@ const RandomQuote = () => {
         <Translator quote={quote} author={author}/>
       </div>
       <div className="quote-block">
-        <p>{quote}</p>
+        <p className="english">{quote}</p>
         <p>- {author}</p>
       </div>
     </div>
