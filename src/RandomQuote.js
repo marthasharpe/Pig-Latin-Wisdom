@@ -3,8 +3,7 @@ import './RandomQuote.css';
 import Translator from './Translator';
 
 const RandomQuote = () => {
-  const [ quote, setQuote ] = useState('');
-  const [ author, setAuthor] = useState('');
+  const [ text, setText ] = useState('');
   
   useEffect(() => {
     fetchQuote();
@@ -14,9 +13,7 @@ const RandomQuote = () => {
     fetch('https://api.quotable.io/random')
       .then(response => response.json())
       .then(data => {
-        console.log(`${data.content} —${data.author}`)
-        setQuote(data.content);
-        setAuthor(data.author);
+        setText(`${data.content} — ${data.author}`)
       })
     }
 
@@ -24,11 +21,10 @@ const RandomQuote = () => {
     <div className="quote-container">
       <button onClick={fetchQuote}>Next Saying</button>
       <div className="quote-block">
-        <Translator quote={quote} author={author}/>
+        <Translator text={text}/>
       </div>
       <div className="quote-block">
-        <p className="english">{quote}</p>
-        <p>- {author}</p>
+        <p className="english">{text}</p>
       </div>
     </div>
   );
