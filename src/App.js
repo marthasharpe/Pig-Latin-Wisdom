@@ -6,7 +6,8 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Yoda Fun</h1>
+      <h1>Words of Wisdom</h1>
+      <h2>~ in Pig Latin ~</h2>
       <div className="app-container">
         <RandomQuote />
       </div>

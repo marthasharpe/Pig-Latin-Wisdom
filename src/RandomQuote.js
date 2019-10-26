@@ -15,10 +15,11 @@ const RandomQuote = () => {
         setAuthor(data.author);
       })
     }
-    
+
   return (
     <div className="quote-container">
-      <button onClick={fetchQuote}>A Wise Saying</button>
+      <button onClick={fetchQuote}>Next Saying</button>
+      <h3>A Wise Saying</h3>
       <p>{quote}</p>
       <p>- {author}</p>
       <Translator quote={quote} author={author}/>
