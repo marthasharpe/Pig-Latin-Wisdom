@@ -1,9 +1,13 @@
-html, body, #root, h1, h2, h3, p {
+html, body, #root {
   margin: 0;
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  background-color: rgb(255, 212, 121);
+}
+
+h1, h2, h3, p {
+  margin: 0;
 }

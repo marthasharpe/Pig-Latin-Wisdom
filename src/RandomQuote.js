@@ -20,12 +20,8 @@ const RandomQuote = () => {
   return (
     <div className="quote-container">
       <button onClick={fetchQuote}>Next Saying</button>
-      <div className="quote-block">
-        <Translator text={text}/>
-      </div>
-      <div className="quote-block">
-        <p className="english">{text}</p>
-      </div>
+      <Translator text={text}/>
+      <p className="english quote">{text}</p>
     </div>
   );
 }

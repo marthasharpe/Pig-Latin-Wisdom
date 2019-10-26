@@ -29,7 +29,7 @@ const Translator = ({ text }) => {
 
   return (
     <div className="translator-container">
-      <p className="translation">{pigLatin}</p>
+      <p className="translation quote">{pigLatin}</p>
     </div>
   );
 }
