@@ -19,8 +19,9 @@ const RandomQuote = () => {
 
   return (
     <div className="quote-container">
-      <button onClick={fetchQuote}>Next Saying</button>
+      <button onClick={fetchQuote}>New Saying</button>
       <Translator text={text}/>
+      <h2 className="title">Translation:</h2>
       <p className="english quote">{text}</p>
     </div>
   );

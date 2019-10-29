@@ -9,12 +9,12 @@ const Translator = ({ text }) => {
   
   useEffect(() => {
     // splits text into words stored in an array
-    let englishArray = text.toLowerCase().split(/\W/);
-    console.log(englishArray);    
+    let englishArray = text.toLowerCase().split(/\s/);
+    console.log(englishArray);
     // translates each string in the array into Pig Latin
     // str.replace(replaceThis, withThis);
     let pigLatinArray = englishArray.map((str) => {
-      if (str.match(/[_.,-]/)) { //if str is not a letter
+      if (str.match(/\W/)) { //if str is not a letter
         return str;
       } else if (str.match(/^[aeiou]/)) {  //if str begins with a vowel, append "way"
         return `${str}way`;
@@ -22,6 +22,7 @@ const Translator = ({ text }) => {
         return str.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
       }
     })
+    console.log(pigLatinArray);
     // joins the items in the array into a single string again and sets state
     let joinedSaying = pigLatinArray.join(' ');
     setPigLatin(joinedSaying);
