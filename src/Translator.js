@@ -5,25 +5,22 @@ const Translator = ({ text }) => {
   
   const [ pigLatin, setPigLatin ] = useState('');
 
-  // Need to remove punctuation, put it back in the right places, and re-capitalize in the right places.
-  
   useEffect(() => {
-    // splits text into words stored in an array
+    // splits text into separate words stored in an array
     let englishArray = text.toLowerCase().split(/\s/);
     console.log(englishArray);
-    // translates each string in the array into Pig Latin
-    // str.replace(replaceThis, withThis);
-    let pigLatinArray = englishArray.map((str) => {
-      if (str.match(/\W/)) { //if str is not a letter
-        return str;
-      } else if (str.match(/^[aeiou]/)) {  //if str begins with a vowel, append "way"
-        return `${str}way`;
-      } else {  //if str begins with consonant(s), append starting consonants and "ay"
-        return str.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
+    // translates each word in the array into Pig Latin
+    let pigLatinArray = englishArray.map((word) => {
+      if (word.match(/\W/)) { //if word is non-alphnumeric
+        return word;
+      } else if (word.match(/^[aeiou]/)) {  //if word begins with a vowel, append "way"
+        return `${word}yay`;
+      } else {  //if word begins with consonant(s), append starting consonants and "ay"
+        return word.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
       }
     })
     console.log(pigLatinArray);
-    // joins the items in the array into a single string again and sets state
+    // joins the array into a single string again and sets state
     let joinedSaying = pigLatinArray.join(' ');
     setPigLatin(joinedSaying);
   },[text]);
