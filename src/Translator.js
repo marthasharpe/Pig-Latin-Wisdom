@@ -11,8 +11,10 @@ const Translator = ({ text }) => {
     console.log(englishArray);
     // translates each word in the array into Pig Latin
     let pigLatinArray = englishArray.map((word) => {
-      if (word.match(/\W/)) { //if word is non-alphnumeric
+      if (word.match(/^\W/)) { //if word is non-alphnumeric
         return word;
+      } else if (word.match(/\w+(?=[!?.,:;])/g)) {
+        return `${word}hi`;
       } else if (word.match(/^[aeiou]/)) {  //if word begins with a vowel, append "way"
         return `${word}yay`;
       } else {  //if word begins with consonant(s), append starting consonants and "ay"
