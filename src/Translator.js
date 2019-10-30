@@ -7,10 +7,11 @@ const Translator = ({ text }) => {
 
   useEffect(() => {
     // splits text into separate words stored in an array
-    let englishArray = text.toLowerCase().split(/\s/);
+    let englishArray = text.split(/\s/);
     console.log(englishArray);
     // translates each word in the array into Pig Latin
     let pigLatinArray = englishArray.map((word) => {
+      //let word = word.toLowerCase();
       if (word.match(/^\W/)) { //if word is non-alphnumeric
         return word;
       } else if (word.match(/\w+(?=[!?.,:;])/g)) { //if words ends with punctuation
@@ -19,13 +20,14 @@ const Translator = ({ text }) => {
         } else { //and begins with consonant(s)
           return word.replace(/^([^aeiou]+)(.*)(?=[!?.,:;])/, '$2$1ay');
         }
-      } else if (word.match(/^[aeiou]/)) {  //if word begins with a vowel, append "way"
+      } else if (word.match(/^[AEIOUaeiou]/)) {  //if word begins with a vowel, append "way"
         return `${word}yay`;
       } else {  //if word begins with consonant(s), append starting consonants and "ay"
         return word.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
       }
     })
     console.log(pigLatinArray);
+
     // joins the array into a single string again and sets state
     let joinedSaying = pigLatinArray.join(' ');
     setPigLatin(joinedSaying);
