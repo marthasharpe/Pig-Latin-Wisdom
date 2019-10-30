@@ -13,8 +13,12 @@ const Translator = ({ text }) => {
     let pigLatinArray = englishArray.map((word) => {
       if (word.match(/^\W/)) { //if word is non-alphnumeric
         return word;
-      } else if (word.match(/\w+(?=[!?.,:;])/g)) {
-        return `${word}hi`;
+      } else if (word.match(/\w+(?=[!?.,:;])/g)) { //if words ends with punctuation
+        if (word.match(/^[aeiou]/)) { //and begins with a vowel
+          return word.replace(/^([aeiou]+)(.*)(?=[!?.,:;])/, '$1$2yay');
+        } else { //and begins with consonant(s)
+          return word.replace(/^([^aeiou]+)(.*)(?=[!?.,:;])/, '$2$1ay');
+        }
       } else if (word.match(/^[aeiou]/)) {  //if word begins with a vowel, append "way"
         return `${word}yay`;
       } else {  //if word begins with consonant(s), append starting consonants and "ay"
