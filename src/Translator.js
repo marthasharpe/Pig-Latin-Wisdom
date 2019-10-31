@@ -7,11 +7,12 @@ const Translator = ({ text }) => {
 
   useEffect(() => {
     // splits text into separate words stored in an array
-    let englishArray = text.split(/\s/);
-    console.log(englishArray);
+    let englishWords = text.split(' ');
+    console.log(englishWords);
+    
     // translates each word in the array into Pig Latin
-    let pigLatinArray = englishArray.map((word) => {
-      //let word = word.toLowerCase();
+    let pigLatinWords = englishWords.map((eachWord) => {
+      let word = eachWord.toLowerCase();
       if (word.match(/^\W/)) { //if word is non-alphnumeric
         return word;
       } else if (word.match(/\w+(?=[!?.,:;])/g)) { //if words ends with punctuation
@@ -26,11 +27,26 @@ const Translator = ({ text }) => {
         return word.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
       }
     })
-    console.log(pigLatinArray);
+    console.log(pigLatinWords);
+
+    let capitalPigLatin = [];
+
+    const capitalize = (arr1, arr2) => {
+      for (let i=0; i < arr1.length; i++) {
+        if (arr1[i].match(/^[A-Z]/)) {
+          capitalPigLatin.push(arr2[i].replace(/^\w/, char => char.toUpperCase()));
+        } else {
+          capitalPigLatin.push(arr2[i]);
+        }
+      }
+    }
+    capitalize(englishWords, pigLatinWords);
+    console.log(capitalPigLatin);
 
     // joins the array into a single string again and sets state
-    let joinedSaying = pigLatinArray.join(' ');
+    let joinedSaying = capitalPigLatin.join(' ');
     setPigLatin(joinedSaying);
+
   },[text]);
 
   return (
