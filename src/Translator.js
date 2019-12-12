@@ -7,9 +7,7 @@ const Translator = ({ text }) => {
 
   useEffect(() => {
     // splits text into separate words stored in an array
-    let englishWords = text.split(' ');
-    console.log(englishWords);
-    
+    let englishWords = text.split(' ');    
     // translates each word in the array into Pig Latin
     let pigLatinWords = englishWords.map((eachWord) => {
       let word = eachWord.toLowerCase();
@@ -27,10 +25,8 @@ const Translator = ({ text }) => {
         return word.replace(/^([^aeiou]+)(.*)/, '$2$1ay');
       }
     })
-    console.log(pigLatinWords);
 
     let capitalPigLatin = [];
-
     const capitalize = (arr1, arr2) => {
       for (let i=0; i < arr1.length; i++) {
         if (arr1[i].match(/^[A-Z]/)) {
@@ -41,7 +37,6 @@ const Translator = ({ text }) => {
       }
     }
     capitalize(englishWords, pigLatinWords);
-    console.log(capitalPigLatin);
 
     // joins the array into a single string again and sets state
     let joinedSaying = capitalPigLatin.join(' ');
