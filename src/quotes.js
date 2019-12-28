@@ -39,4 +39,16 @@ export const quotes = [
         content: 'Whoever is happy will make others happy too.',
         author: 'Anne Frank',
     },
+    {
+        content: 'He who has a why to live can bear almost any how.',
+        author: 'Friedrich Nietzsche',
+    },
+    {
+        content: 'Silence is often misinterpreted but never misquoted.',
+        author: 'Unknown',
+    },
+    {
+        content: 'Proverbs are short sentences drawn from long experience.',
+        author: 'Cervantes',
+    },
 ]
